@@ -54,6 +54,8 @@ body {
   margin: 1rem auto;
 }
 .save-button {
+  text-align: center;
+  min-width: 50px;
   position: absolute;
   top: 25px;
   right: 25px;
@@ -63,6 +65,38 @@ body {
 }
 .save-button:hover {
   background-color: green;
+  color: white;
+}
+
+.edit-button {
+  min-width: 50px;
+  text-align: center;
+
+  position: absolute;
+  top: 40%;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightyellow;
+}
+.edit-button:hover {
+  background-color: darkkhaki;
+  color: white;
+}
+
+.delete-button {
+  min-width: 50px;
+  text-align: center;
+
+  position: absolute;
+  bottom: 40px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightcoral;
+}
+.delete-button:hover {
+  background-color: red;
   color: white;
 }
 

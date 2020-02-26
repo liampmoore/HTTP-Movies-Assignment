@@ -41,9 +41,9 @@ function Movie({ addToSavedList }) {
         Edit
       </div>
 
-      {/* <div className='delete-button'>
+      <div className='delete-button' onClick={() => history.push(`/delete-movie/${movie.id}`)}>
         Delete
-      </div> */}
+      </div>
       </div>
     </div>
   );

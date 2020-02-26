@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
@@ -10,7 +10,7 @@ import axios from 'axios';
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
-  const [doneDeleting, setDoneDeleting] = useState(false);
+
 
   const getMovieList = () => {
     axios
@@ -34,8 +34,7 @@ const App = () => {
       .delete(`http://localhost:5000/api/movies/${id}`)
         .then(res => {
           console.log(res)
-          setMovieList(res.data)
-          setDoneDeleting(true)
+
         })
         .catch(err => console.log(err))
   }
@@ -44,16 +43,15 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
-  useEffect(() => {
-    getMovieList();
-  }, []);
+
+
 
   return (
     <>
       <SavedList list={savedList} />
 
       <Route exact path="/">
-        <MovieList movies={movieList} setDoneDeleting={setDoneDeleting}/>
+        <MovieList movies={movieList} getMovieList={getMovieList} />
       </Route>
 
       <Route path="/movies/:id">
@@ -65,7 +63,7 @@ const App = () => {
       </Route>
 
       <Route path='/delete-movie/:id'>
-        <DeleteMovie deleteMovie={deleteMovie} doneDeleting={doneDeleting}/>
+        <DeleteMovie deleteMovie={deleteMovie} getMovieList={getMovieList} />
       </Route>
     </>
   );

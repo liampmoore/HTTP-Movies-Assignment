@@ -20,8 +20,8 @@ function DeleteMovie(props) {
   }, [match.params.id]);
 
 
-  const handleDelete = () => {
-    props.deleteMovie(movie.id)
+  const handleDelete = async () => {
+    await props.deleteMovie(movie.id)
     history.push("/")
   }
 
